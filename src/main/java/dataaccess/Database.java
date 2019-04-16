@@ -36,13 +36,13 @@ public class Database {
 		
 //		Skapa en tabell om ingen redan existerar
 		Statement statement = connection.createStatement();
-		statement.execute("create table if not exists raceresults (RaceId integer, Turtlename text, Position integer)");
+		statement.execute("create table if not exists raceresults (RaceId integer, TurtleId integer, Position integer)");
 			
 		for (int i = 0 ; i < contenders.size() ; i++ ) {
 //		Lägg till poster
 			PreparedStatement prepStatement = connection.prepareStatement("insert into raceresults values(?, ? , ?)");
 			prepStatement.setInt(1, raceId);
-			prepStatement.setString(2, contenders.get(i).getTurtle().getName());
+			prepStatement.setInt(2, contenders.get(i).getTurtle().getId());
 			prepStatement.setInt(3, contenders.get(i).getPoints());
 			prepStatement.execute();
 		}

@@ -83,6 +83,10 @@ public class Turtle {
 		return "Turtle [name=" + name + ", speed=" + speed + ", stamina=" + stamina + ", luck=" + luck + "]";
 	}
 	
+	public int getId () {
+		return id;
+	}
+	
 	
 	
 
