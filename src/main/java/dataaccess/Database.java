@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import Domain.Turtle;
+import domain.Turtle;
 import service.Racecontender;
 
 public class Database {

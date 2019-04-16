@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import Domain.Turtle;
+import domain.Turtle;
 import dataaccess.Database;
 
 public class Race {

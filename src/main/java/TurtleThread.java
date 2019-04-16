@@ -1,4 +1,4 @@
-import Domain.Turtle;
+import domain.Turtle;
 import service.Race;
 
 public class TurtleThread extends Thread {

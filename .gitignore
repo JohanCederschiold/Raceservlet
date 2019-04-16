@@ -1,2 +1,5 @@
 Dockerfile
 target
+.classpath
+.project
+.settings/

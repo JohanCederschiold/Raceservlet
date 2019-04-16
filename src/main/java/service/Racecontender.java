@@ -2,7 +2,7 @@ package service;
 
 import java.util.Random;
 
-import Domain.Turtle;
+import domain.Turtle;
 
 public class Racecontender {
 	

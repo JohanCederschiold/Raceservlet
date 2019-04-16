@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Domain.Turtle;
+import domain.Turtle;
 import service.Race;
 
 @WebServlet("/race")
