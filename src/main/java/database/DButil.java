@@ -54,7 +54,7 @@ public class DButil {
 		statement.execute("create table if not exists raceresults (RaceId integer, TurtleId integer, Position integer)");
 			
 		for (int i = 0 ; i < contenders.size() ; i++ ) {
-//		Lägg till poster
+//		Lgg till poster
 			PreparedStatement prepStatement = connection.prepareStatement("insert into raceresults values(?, ? , ?)");
 			prepStatement.setInt(1, raceId);
 			prepStatement.setInt(2, contenders.get(i).getTurtle().getId());
@@ -205,5 +205,5 @@ public class DButil {
 		connection.close();
 		
 	}
-   
+	  
 }
