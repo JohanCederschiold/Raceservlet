@@ -5,12 +5,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import dataaccess.DataStorage;
+import dataaccess.DataStorageDBconnect;
+import dataaccess.DataStorageFactory;
 import domain.Turtle;
-import dataaccess.Database;
 
 public class Race {
 	
-	private Database db;
+	private DataStorage db;
 //	private Turtle [] contenders;
 	private Racecontender [] raceContenders;
 	private final int SLOTS = 8;
@@ -29,7 +31,7 @@ public class Race {
 	public Race () {
 		
 //		Instantiate Databaseobject
-		db = new Database();
+		db = DataStorageFactory.getStorage();
 		
 //		Check if tables is created (and contains turtles). If not create 8 turtles
 		try {
@@ -80,7 +82,7 @@ public class Race {
 	
 	public void startRace () {
 
-//		Database db = new Database();
+//		DataStorageDBconnect db = new DataStorageDBconnect();
 				
 		int raceNo = 0;
 		try {

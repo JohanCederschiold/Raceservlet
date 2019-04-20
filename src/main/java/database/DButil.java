@@ -1,4 +1,4 @@
-package dataaccess;
+package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,25 +13,40 @@ import java.util.Properties;
 import domain.Turtle;
 import service.Racecontender;
 
-public class Database {
+public class DButil {
 	
+	private static DButil instance;
 	private Connection connection;
+	private String connectionUrl = "jdbc:postgresql://postgres/";
+	private String driver = "org.postgresql.Driver";
+	
+	
+//	Privat kontruktor(för singleton)
+	private DButil () {
+		
+	}
+	
+//	Publik getInstance (för singleton)
+	public static DButil getInstance () {
+		if (instance == null) {
+			instance = new DButil();
+		}
+		return instance;
+	}
 	
 	
 	private void setUpConnection() throws ClassNotFoundException, SQLException {
 		
-//		A method that sets up the connection (instance variable)
-		
-		Class.forName("org.postgresql.Driver");
+		Class.forName(driver);
 		Properties properties = new Properties();
 		properties.setProperty("user", "postgres");
-		connection = DriverManager.getConnection("jdbc:postgresql://postgres/", properties);
+		connection = DriverManager.getConnection(connectionUrl, properties);
 		
 	}
 	
-	
+//	Metod som registrerar raceresults
 	public void registerResults(List <Racecontender> contenders, int raceId ) throws ClassNotFoundException, SQLException  {
-				
+		
 		setUpConnection();
 		
 //		Skapa en tabell om ingen redan existerar
@@ -52,6 +67,7 @@ public class Database {
 
 	}
 	
+//	Hämtar alla registrerade turtles. 
 	public List<Turtle> getAllTurtles() throws ClassNotFoundException, SQLException {
 		
 		List<Turtle> allTurtles = new ArrayList<>();
@@ -76,7 +92,7 @@ public class Database {
 		
 	}
 	
-	
+//	Registrerar ett race (innan genomförande).
 	public void registerRace () throws ClassNotFoundException, SQLException {
 		
 		setUpConnection();
@@ -96,6 +112,8 @@ public class Database {
 
 	}
 	
+	
+//	Hämtar ID på senast registerade race
 	public int getLastestRaceId () throws ClassNotFoundException, SQLException {
 		
 		setUpConnection();
@@ -114,6 +132,7 @@ public class Database {
 		
 	}
 	
+//	Kontrollerar om Turtles finns registrerade sedan innan. Om inte skapas 8 turtles.
 	public void instantiateTurtles () throws ClassNotFoundException, SQLException {
 		
 		setUpConnection();
@@ -134,7 +153,6 @@ public class Database {
 		} else {
 			System.out.println("No need to create turtles");
 		}
-		
 		
 	}
 	
@@ -187,8 +205,5 @@ public class Database {
 		connection.close();
 		
 	}
-	
-	
-
+   
 }
-
