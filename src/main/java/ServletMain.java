@@ -48,7 +48,7 @@ public class ServletMain extends HttpServlet {
 		if (userRequest == null  ) {
 			response.setContentType("text/plain");
 			response.getWriter().println("Here Be Turtles...(check log)");
-		} else if (userRequest == "turtles") {
+		} else if (userRequest.equals("turtles")) {
 			response.getWriter().println(getAllTurtlesJson());						
 		} else {
 			response.getWriter().println(userRequest);
