@@ -17,6 +17,8 @@ public interface DataStorage {
 	public int getLastestRaceId () throws ClassNotFoundException, SQLException;
 	
 	public void instantiateTurtles () throws ClassNotFoundException, SQLException;
+	
+	public List<Turtle> getLastRaceResult () throws ClassNotFoundException, SQLException;
 		
 		
 

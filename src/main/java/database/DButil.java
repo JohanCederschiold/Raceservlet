@@ -7,8 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
+import java.util.TreeMap;
 
 import domain.Turtle;
 import service.Racecontender;
@@ -205,5 +208,31 @@ public class DButil {
 		connection.close();
 		
 	}
+	
+	
+//	public Map<Integer,String> getLatestRaceResults () throws ClassNotFoundException, SQLException {
+//		
+//		setUpConnection();
+//		Map<Integer, String> raceResults = new TreeMap<>();
+//		
+//		PreparedStatement statement = connection.prepareStatement("select * "
+//				+ "from raceresults where raceid = ?");
+//		statement.setInt(1, getLastestRaceId());
+//		ResultSet result = statement.executeQuery();
+//	
+//		int counter = 0;
+//		
+//		while (result.next()) {
+//			raceResults.put(++counter, arg1)
+//			
+//			
+//		}
+//		
+//		
+//		return null;
+//		
+//	}
+	
+	
 	  
 }
