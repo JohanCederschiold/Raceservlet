@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Map;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +13,6 @@ import org.json.JSONObject;
 import dataaccess.DataStorage;
 import dataaccess.DataStorageFactory;
 import domain.Turtle;
-import service.Race;
 
 @WebServlet("/race")
 public class ServletMain extends HttpServlet {
@@ -51,6 +51,9 @@ public class ServletMain extends HttpServlet {
 		} else if (userRequest.equals("turtles")) {
 			response.setContentType("text/json");
 			response.getWriter().println(getAllTurtlesJson());						
+		} else if (userRequest.equals("latest")) {
+			response.setContentType("text/json");
+			response.getWriter().println(getLatestRaceResults());
 		} else {
 			response.getWriter().println(userRequest);
 		}
@@ -80,6 +83,30 @@ public class ServletMain extends HttpServlet {
 		}
 		
 		return jsonarray;
+	}
+	
+	public JSONArray getLatestRaceResults () {
+		
+		JSONArray jsonArray = new JSONArray();
+		
+		try {
+			Map<Integer, String> raceResults = ds.getLastRaceResult();
+			
+			for (Map.Entry<Integer, String> entry : raceResults.entrySet()) {
+				JSONObject jo = new JSONObject();
+				jo.put("Points", entry.getKey());
+				jo.put("Turtle", entry.getValue());
+				jsonArray.put(jo);			
+			}
+			
+			
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return jsonArray;
 	}
 	
 	

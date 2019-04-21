@@ -210,28 +210,27 @@ public class DButil {
 	}
 	
 	
-//	public Map<Integer,String> getLatestRaceResults () throws ClassNotFoundException, SQLException {
-//		
-//		setUpConnection();
-//		Map<Integer, String> raceResults = new TreeMap<>();
-//		
-//		PreparedStatement statement = connection.prepareStatement("select * "
-//				+ "from raceresults where raceid = ?");
-//		statement.setInt(1, getLastestRaceId());
-//		ResultSet result = statement.executeQuery();
-//	
-//		int counter = 0;
-//		
-//		while (result.next()) {
-//			raceResults.put(++counter, arg1)
-//			
-//			
-//		}
-//		
-//		
-//		return null;
-//		
-//	}
+	public Map<Integer,String> getLatestRaceResults () throws ClassNotFoundException, SQLException {
+		
+		setUpConnection();
+		Map<Integer, String> raceResults = new TreeMap<>();
+		
+		PreparedStatement statement = connection.prepareStatement("select raceresults.position, turtle.name" + 
+				"from raceresults join " + 
+				"turtle on turtle.turtle_id = raceresults.turtleid" + 
+				"where raceid = ?;");
+		statement.setInt(1, getLastestRaceId());
+		ResultSet result = statement.executeQuery();
+
+		
+		while (result.next()) {
+			raceResults.put(result.getInt(1), result.getString(2));
+		}
+		
+		
+		return raceResults;
+		
+	}
 	
 	
 	  

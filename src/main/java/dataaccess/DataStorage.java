@@ -3,6 +3,8 @@ package dataaccess;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
+
 import domain.Turtle;
 import service.Racecontender;
 
@@ -18,7 +20,7 @@ public interface DataStorage {
 	
 	public void instantiateTurtles () throws ClassNotFoundException, SQLException;
 	
-	public List<Turtle> getLastRaceResult () throws ClassNotFoundException, SQLException;
+	public Map<Integer, String> getLastRaceResult () throws ClassNotFoundException, SQLException;
 		
 		
 

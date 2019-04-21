@@ -2,6 +2,7 @@ package dataaccess;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import database.DButil;
 import domain.Turtle;
@@ -45,10 +46,9 @@ public class DataStorageDBconnect implements DataStorage {
 	}
 
 	@Override
-	public List<Turtle> getLastRaceResult() throws ClassNotFoundException, SQLException {
-//		TODO: add connection do DButil when method is created. 
-		
-		return null;
+	public Map<Integer, String> getLastRaceResult() throws ClassNotFoundException, SQLException {
+		DButil db = DButil.getInstance();
+		return db.getLatestRaceResults();
 	}
 	
 	
