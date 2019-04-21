@@ -50,6 +50,8 @@ public class ServletMain extends HttpServlet {
 			response.getWriter().println("Here Be Turtles...(check log)");
 		} else if (userRequest == "turtles") {
 			response.getWriter().println(getAllTurtlesJson());						
+		} else {
+			response.getWriter().println(userRequest);
 		}
 		
 		

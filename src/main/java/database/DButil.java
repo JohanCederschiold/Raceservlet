@@ -21,12 +21,12 @@ public class DButil {
 	private String driver = "org.postgresql.Driver";
 	
 	
-//	Privat kontruktor(för singleton)
+//	Private constructor(for singleton)
 	private DButil () {
 		
 	}
 	
-//	Publik getInstance (för singleton)
+//	Public getInstance (for singleton)
 	public static DButil getInstance () {
 		if (instance == null) {
 			instance = new DButil();
@@ -67,7 +67,7 @@ public class DButil {
 
 	}
 	
-//	Hämtar alla registrerade turtles. 
+//	Get all registered turtles. 
 	public List<Turtle> getAllTurtles() throws ClassNotFoundException, SQLException {
 		
 		List<Turtle> allTurtles = new ArrayList<>();
@@ -92,7 +92,7 @@ public class DButil {
 		
 	}
 	
-//	Registrerar ett race (innan genomförande).
+//	Resgisters a race with date and id.
 	public void registerRace () throws ClassNotFoundException, SQLException {
 		
 		setUpConnection();
@@ -113,7 +113,7 @@ public class DButil {
 	}
 	
 	
-//	Hämtar ID på senast registerade race
+//	Gets the id of the latest registered race. 
 	public int getLastestRaceId () throws ClassNotFoundException, SQLException {
 		
 		setUpConnection();
