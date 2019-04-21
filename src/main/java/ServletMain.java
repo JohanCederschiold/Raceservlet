@@ -42,9 +42,17 @@ public class ServletMain extends HttpServlet {
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		response.setContentType("text/plain");
-		response.getWriter().println("Here Be Turtles...(check log)");
-		response.getWriter().print(getAllTurtlesJson());
+		
+		String userRequest = request.getParameter("get");
+		
+		if (userRequest == null  ) {
+			response.setContentType("text/plain");
+			response.getWriter().println("Here Be Turtles...(check log)");
+		} else if (userRequest == "turtles") {
+			response.getWriter().println(getAllTurtlesJson());						
+		}
+		
+		
 	}
 	
 	
