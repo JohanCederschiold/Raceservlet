@@ -215,9 +215,9 @@ public class DButil {
 		setUpConnection();
 		Map<Integer, String> raceResults = new TreeMap<>();
 		
-		PreparedStatement statement = connection.prepareStatement("select raceresults.position, turtle.name" + 
+		PreparedStatement statement = connection.prepareStatement("select raceresults.position, turtle.name " + 
 				"from raceresults join " + 
-				"turtle on turtle.turtle_id = raceresults.turtleid" + 
+				"turtle on turtle.turtle_id = raceresults.turtleid " + 
 				"where raceid = ?;");
 		statement.setInt(1, getLastestRaceId());
 		ResultSet result = statement.executeQuery();
