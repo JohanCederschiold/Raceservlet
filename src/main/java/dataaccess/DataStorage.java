@@ -21,6 +21,8 @@ public interface DataStorage {
 	public void instantiateTurtles () throws ClassNotFoundException, SQLException;
 	
 	public Map<Integer, String> getLastRaceResult () throws ClassNotFoundException, SQLException;
+	
+	public Map<String, Integer> getLeaderboard () throws ClassNotFoundException, SQLException;
 		
 		
 

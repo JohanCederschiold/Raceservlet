@@ -50,6 +50,12 @@ public class DataStorageDBconnect implements DataStorage {
 		DButil db = DButil.getInstance();
 		return db.getLatestRaceResults();
 	}
+
+	@Override
+	public Map<String, Integer> getLeaderboard() throws ClassNotFoundException, SQLException {
+		DButil db = DButil.getInstance();
+		return db.getLeaderboard();
+	}
 	
 	
 }

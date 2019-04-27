@@ -232,6 +232,29 @@ public class DButil {
 		
 	}
 	
+	public Map<String,Integer> getLeaderboard () throws ClassNotFoundException, SQLException {
+		
+		setUpConnection();
+		Map<String, Integer> leaderboard = new TreeMap<>();
+		
+		Statement statement = connection.createStatement();
+		ResultSet result = statement.executeQuery("select turtle.name , sum(raceresults.position) as points " + 
+				"from turtle " + 
+				"join raceresults " + 
+				"on turtle.turtle_id = raceresults.turtleid " + 
+				"group by turtle.name " + 
+				"order by points desc;");
+
+		
+		while (result.next()) {
+			leaderboard.put(result.getString(1), result.getInt(2));
+		}
+		
+		
+		return leaderboard;
+		
+	}
+	
 	
 	  
 }
