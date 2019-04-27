@@ -56,7 +56,7 @@ public class ServletMain extends HttpServlet {
 			response.getWriter().println(getLatestRaceResults());
 		} else if (userRequest.equals("leaders")) {
 			response.setContentType("application/json");
-			response.getWriter().println(getLatestRaceResults());
+			response.getWriter().println(getLeaderboard());
 		}else {
 			response.getWriter().println(userRequest);
 		}
