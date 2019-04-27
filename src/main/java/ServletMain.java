@@ -52,7 +52,7 @@ public class ServletMain extends HttpServlet {
 			response.setContentType("text/json");
 			response.getWriter().println(getAllTurtlesJson());						
 		} else if (userRequest.equals("latest")) {
-			response.setContentType("text/json");
+			response.setContentType("application/json");
 			response.getWriter().println(getLatestRaceResults());
 		} else {
 			response.getWriter().println(userRequest);
@@ -98,12 +98,10 @@ public class ServletMain extends HttpServlet {
 				jo.put("Turtle", entry.getValue());
 				jsonArray.put(jo);			
 			}
-			
-			
-			
+
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-		}
+		}	
 		
 		
 		return jsonArray;
